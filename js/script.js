@@ -37,17 +37,14 @@ const appendPageLinks = (studentList) => {
     const numberOfPages = Math.ceil(studentList.length / 10);
   /* Adding page links to the page link section by creating and appending
    new DOM elements*/
-
-
  // Creating a page link section
    const div = document.createElement('div');
    const paginationDiv = page.appendChild(div);
    paginationDiv.className = 'pagination';
 
-
-    const ul = document.createElement('ul');
-    let pageCounter = 0;
-    for (let j=0; j < numberOfPages; j+=1) {
+   const ul = document.createElement('ul');
+   let pageCounter = 0;
+   for (let j=0; j < numberOfPages; j+=1) {
         pageCounter +=1;
         const li = document.createElement('li');
         const anchor = document.createElement('a');
@@ -58,21 +55,19 @@ const appendPageLinks = (studentList) => {
         paginationAnchor.innerHTML = pageCounter;
     }
 
-    /* Adding an eventlistener for the clicked page link. Since pagination div is
-    created dynamically, the event listener is called on its parent - page div*/
-const createdDiv = document.querySelector('div.pagination');
-  function listen(event)  {
-    if (event.target.tagName.toLowerCase() === "a") {
-      showPage(event.target.textContent, studentList);
-      event.target.className = 'active';
-    }
-}
+    /* Adding an eventlistener for the clicked page link*/
+    const createdDiv = document.querySelector('div.pagination');
+    function listen(event)  {
+      if (event.target.tagName.toLowerCase() === "a") {
+        showPage(event.target.textContent, studentList);
+        event.target.className = 'active';
+        }
+      }
 /* The following code allows to avoid duplication of event listeners
  when function is called more than once*/
     createdDiv.removeEventListener('click', listen);
     createdDiv.addEventListener('click', listen);
 }
-
 
 // Calling functions for displaying the first ten students from the list
 showPage(1, arrayOfStudents);
