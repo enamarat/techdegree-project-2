@@ -8,8 +8,6 @@ const students = document.querySelectorAll('.student-item');
 // Converting "students" nodelist to an array
 let arrayOfStudents = Array.from(students);
 const page = document.querySelector('.page');
-let numberOfShows = 0;
-const previous = [];
 
 //  A function which displays a list of students according to a page number
 const showPage = (pageNumber, studentList) => {
