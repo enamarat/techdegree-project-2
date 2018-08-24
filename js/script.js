@@ -57,10 +57,19 @@ const appendPageLinks = (studentList) => {
 
     /* Adding an eventlistener for the clicked page link*/
     const createdDiv = document.querySelector('div.pagination');
+
     function listen(event)  {
       if (event.target.tagName.toLowerCase() === "a") {
         showPage(event.target.textContent, studentList);
         event.target.className = 'active';
+
+    // Once a page number has been clicked, the "active" class is removed from other pages
+    const a = document.querySelectorAll('a');
+    for (n=0; n < a.length; n +=1) {
+      if (a[n] !== event.target) {
+        a[n].classList.remove("active");
+      }
+    }
         }
       }
 /* The following code allows to avoid duplication of event listeners
